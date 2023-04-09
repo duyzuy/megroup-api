@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'dvu';
+  src:  url('fonts/dvu.eot?tcgxuh');
+  src:  url('fonts/dvu.eot?tcgxuh#iefix') format('embedded-opentype'),
+    url('fonts/dvu.ttf?tcgxuh') format('truetype'),
+    url('fonts/dvu.woff?tcgxuh') format('woff'),
+    url('fonts/dvu.svg?tcgxuh#dvu') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.dvu {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dvu' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dvu-star:before {
+  content: "\e900";
+  color: #ffc600;
+}
+.dvu-close:before {
+  content: "\e901";
+  color: #fff;
+}
+.dvu-quote-end:before {
+  content: "\e902";
+  color: #f47c7b;
+}
+.dvu-quote-start:before {
+  content: "\e903";
+  color: #f47c7b;
+}
+.dvu-download:before {
+  content: "\e904";
+  color: #cfd2d4;
+}
+.dvu-dvu-notify:before {
+  content: "\e905";
+  color: #cfd2d4;
+}
+.dvu-phone-ring:before {
+  content: "\e906";
+  color: #cfd2d4;
+}
+.dvu-web:before {
+  content: "\e984";
+  color: #6f787e;
+}
+.dvu-phone:before {
+  content: "\e985";
+  color: #6f787e;
+}
+.dvu-inbox:before {
+  content: "\e986";
+  color: #6f787e;
+}
+.dvu-email:before {
+  content: "\e987";
+  color: #6f787e;
+}
+.dvu-pin:before {
+  content: "\e988";
+  color: #6f787e;
+}

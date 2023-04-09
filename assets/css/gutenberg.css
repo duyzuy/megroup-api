@@ -1,0 +1,89 @@
+.wp-block-media-text__media img{
+    height: auto;
+}
+p-10{
+    
+}
+.wp-block-media-text,
+.wp-block-columns{
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 10px;
+}
+.wp-block-media-text .wp-block-media-text__content,
+.wp-block-media-text__media,
+.wp-block-column{
+    padding: 0 15px
+}
+
+
+.wp-block-group{
+    padding: 24px;
+}
+.wp-block-group .wp-block-media-text, 
+.wp-block-group .wp-block-columns{
+    margin-left: -24px;
+    margin-right: -24px;
+}
+.wp-block-group .wp-block-media-text__content,
+.wp-block-group .wp-block-media-text__media,
+.wp-block-group .wp-block-columns .wp-block-column{
+    padding: 0 24px
+}
+
+.wp-block-column:not(:first-child){
+    margin-left: 0 !Important;
+}
+.wp-block-quote{
+    font-size: 1.25rem;
+  
+}
+@media screen and (max-width: 767.98px){
+    .wp-block-media-text.is-stacked-on-mobile{
+        grid-template-columns: 100%!important;
+    }
+    .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media{
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 1;
+        grid-row: 1; 
+    }
+    .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media, 
+    .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content{
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 2;
+        grid-row: 2;
+    
+    }
+    .wp-block-group{
+        padding: 15px;
+    }
+    .wp-block-group .wp-block-media-text,
+    .wp-block-group .wp-block-columns{
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .wp-block-group .wp-block-media-text__content,
+    .wp-block-group .wp-block-media-text__media,
+    .wp-block-group .wp-block-columns{
+        padding: 0 15px
+    }
+   
+    .wp-block-media-text .wp-block-media-text__media{
+        margin-bottom: 15px;
+    }
+    .wp-block-column{
+        flex-basis: calc(100%)!important;
+        flex-grow: 0;
+    
+    }
+    .wp-block-column:nth-child(2n){
+        margin-left: 0;
+    }
+}
+@media screen and (min-width: 992px){
+    .wp-block-quote{
+        padding: 15px 55px;
+    }
+}
