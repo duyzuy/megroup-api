@@ -63,9 +63,7 @@ require get_template_directory() . '/inc/shortcodes/sc-form-contact.php';
 //RESTAPI
 
 require get_template_directory() . '/inc/restapi/stores.php';
+require get_template_directory() . '/inc/restapi/post.php';
 
 //HELPERS
 require get_template_directory() . '/inc/helpers/gallery.php';
-
-
-
