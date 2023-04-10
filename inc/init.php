@@ -18,7 +18,7 @@ require get_template_directory() . '/inc/functions/ajax.php';
 //POST TYPES
 require get_template_directory() . '/inc/post-types/product.php';
 require get_template_directory() . '/inc/post-types/slider.php';
-require get_template_directory() . '/inc/post-types/downloadable.php';
+// require get_template_directory() . '/inc/post-types/downloadable.php';
 require get_template_directory() . '/inc/post-types/gallery.php';
 require get_template_directory() . '/inc/post-types/stores.php';
 
@@ -47,7 +47,9 @@ require get_template_directory() . '/inc/functions/gutenberg.php';
 
 
 //menupage
-require get_template_directory() . '/inc/menupage/store.php';
+// require get_template_directory() . '/inc/menupage/store.php';
+require get_template_directory() . '/inc/menupage/me-setting.php';
+
 
 
 //SHORTCODE

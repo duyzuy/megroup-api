@@ -69,25 +69,3 @@ add_action( 'rest_api_init', function () {
         },
     ) );
 } );
-
-// register_rest_route($namespace, '/'.$this->base, array(
-//   array(
-//     'methods'  => WP_REST_Server::READABLE,
-//     'callback' => function () {
-//         return rest_ensure_response(
-//             Perfect_Woocommerce_Brands::get_brands()
-//         );
-//     },
-//     'permission_callback' => '__return_true'
-//   ),
-//   array(
-//     'methods'  => WP_REST_Server::CREATABLE,
-//     'callback'  => array( $this, 'create_brand' ),
-//     'permission_callback' => '__return_true'
-//   ),
-//   array(
-//     'methods'   => WP_REST_Server::DELETABLE,
-//     'callback'  => array( $this, 'delete_brand' ),
-//     'permission_callback' => '__return_true'
-//   )
-// ));

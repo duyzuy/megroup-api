@@ -70,7 +70,7 @@ function dv_register_category() {
         'show_in_nav_menus' => true,
         'show_ui'           => true,
         'show_tagcloud'     => true,
-        'rewrite'            => array( 'slug' => 'group-slider' ),
+        'rewrite'           => array( 'slug' => 'group-slider' ),
         'hierarchical'      => true,
         'show_admin_column' => true,
         'query_var'         => true,
