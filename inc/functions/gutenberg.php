@@ -14,7 +14,8 @@
 
 
 //filter block type 
-add_filter( 'allowed_block_types', 'dvu_blocktype_register' );
+
+add_filter( 'allowed_block_types_all', 'dvu_blocktype_register' );
 
 function dvu_blocktype_register( $allowed_block_types ) {
 
@@ -49,6 +50,3 @@ function dvu_blocktype_register( $allowed_block_types ) {
     );
 
 }
-
-
-

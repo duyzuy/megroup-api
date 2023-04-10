@@ -40,6 +40,7 @@ function dv_get_all_post(WP_REST_Request $request) {
     }
 
   };
+
   if($slug){
     $output['data'] = count($postsData) > 0 ? $postsData[0]: $postsData;
   }else{
@@ -60,7 +61,33 @@ function dv_get_all_post(WP_REST_Request $request) {
 
 add_action( 'rest_api_init', function () {
         register_rest_route( 'dv/v1', 'posts', array(
-        'methods' => 'GET',
-        'callback' => 'dv_get_all_post',
+          'methods'  => WP_REST_Server::READABLE,
+          'callback' => 'dv_get_all_post',
+          'permission_callback' =>  function ( WP_REST_Request $request ) {
+            print_r($request);
+            return true;
+        },
     ) );
 } );
+
+// register_rest_route($namespace, '/'.$this->base, array(
+//   array(
+//     'methods'  => WP_REST_Server::READABLE,
+//     'callback' => function () {
+//         return rest_ensure_response(
+//             Perfect_Woocommerce_Brands::get_brands()
+//         );
+//     },
+//     'permission_callback' => '__return_true'
+//   ),
+//   array(
+//     'methods'  => WP_REST_Server::CREATABLE,
+//     'callback'  => array( $this, 'create_brand' ),
+//     'permission_callback' => '__return_true'
+//   ),
+//   array(
+//     'methods'   => WP_REST_Server::DELETABLE,
+//     'callback'  => array( $this, 'delete_brand' ),
+//     'permission_callback' => '__return_true'
+//   )
+// ));
