@@ -53,7 +53,7 @@
     $(".btn-upload-banner").each(function () {
       $(this).on("click", function (e) {
         e.preventDefault();
-        var inputhd = $(this).parent(".pyre_field").find("input:hidden");
+        // var inputhd = $(this).parent(".pyre_field").find("input:hidden");
         var inputSrc = $(this).parent(".pyre_field").find(".thumbnail_url");
         var thumbnail = $(this).parent(".pyre_field").find(".pyre_thumbnail");
         var image = $("<img>");
@@ -87,7 +87,7 @@
           image.attr("src", fileUrl);
           thumbnail.html("");
           thumbnail.html(image);
-          inputhd.val(fileId);
+          // inputhd.val(fileId);
           inputSrc.val(fileUrl);
         });
 
@@ -219,7 +219,48 @@
       });
     });
 
-    //Slider banner upload for slider post type
+    $(".dvu-btn-upload").each(function () {
+      $(this).on("click", function (e) {
+        e.preventDefault();
+        const inputHidden = $(this).parent(".pyre_field").find("input:hidden");
+        const previewImage = $(this).parent(".pyre_field").find(".preview-img");
+        const image = $("<img>");
+        media_uploader = wp.media({
+          title: "Choose file",
+          library: {
+            order: "DESC",
+            orderby: "date", // [ 'name', 'author', 'date', 'title', 'modified', 'uploadedTo', 'id', 'post__in', 'menuOrder' ]
+            type: "image",
+            search: null,
+            uploadedTo: null,
+          },
+          multiple: false,
+        });
+
+        media_uploader.on("select", function () {
+          var file = media_uploader.state().get("selection").models;
+
+          var fileId = file[0].attributes.id;
+          var fileName = file[0].attributes.filename;
+          var fileUrl = file[0].attributes.url;
+          image.attr("src", fileUrl);
+          previewImage.html("");
+          previewImage.html(image);
+          inputHidden.val(fileUrl);
+        });
+
+        media_uploader.open();
+      });
+    });
+    $(".dvu-btn-remove").each(function () {
+      $(this).on("click", function (e) {
+        e.preventDefault();
+        const inputHidden = $(this).parent(".pyre_field").find("input:hidden");
+        const previewImage = $(this).parent(".pyre_field").find(".preview-img");
+        previewImage.html("<span>No image</span>");
+        inputHidden.val("");
+      });
+    });
   });
 
   function inArray(target, array) {

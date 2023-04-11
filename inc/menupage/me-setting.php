@@ -5,205 +5,209 @@ function wpdocs_register_my_custom_menu_page() {
         'Me setting',
         'manage_options',
         'me_setting',
-        'dvu_homepage_callback',
+        'dvu_homepage_html',
         'dashicons-welcome-widgets-menus',
         10
     );
+	add_submenu_page( 'me_setting', 'Thiết lập trang chủ', 'Trang chủ',
+	'manage_options', 'me_setting');
+
+	add_submenu_page( 'me_setting', 'Thiết lập thông tin đầu trang', 'Đầu trang',
+	'manage_options', 'me_setting_header', 'submenu_header_callback', 5);
+	
+	// add_submenu_page( 'me_setting', 'Thiết lập thông tin chân trang', 'Chân trang',
+	// 'manage_options', 'me_setting_footer', 'submenu_footer_callback', 10);
+	
+	
+	// add_submenu_page( $parent_slug:string, $page_title:string, $menu_title:string, $capability:string, $menu_slug:string, $callback:callable, $position:integer|float|null )
 }
 add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page' );
 
 
-function dvu_homepage_callback(){
+function dvu_homepage_html(){
     if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
 
+	require get_template_directory() . '/inc/menupage/setting/home-options.php';
+}
 
-       // add error/update messages
+//add submenu header fields
 
-	// check if the user have submitted the settings
-	// WordPress will add the "settings-updated" $_GET parameter to the url
-	if ( isset( $_GET['settings-updated'] ) ) {
-		// add settings saved message with the class of "updated"
-		add_settings_error( 'wporg_messages', 'wporg_message', __( 'Settings Saved', 'wporg' ), 'updated' );
+function submenu_header_callback () {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
 
-	// show error/update messages
-	settings_errors( 'wporg_messages' );
-	?>
-<div class="wrap">
-  <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-  <form action="options.php" method="post">
-    <?php
-                // output security fields for the registered setting "wporg"
-                settings_fields( 'wporg' );
-                // output setting sections and their fields
-                // (sections are registered for "wporg", each field is registered to a specific section)
-                do_settings_sections( 'wporg' );
-                // output save settings button
-                submit_button( 'Save Settings' );
-                ?>
-  </form>
-</div>
-<?php 
+	require get_template_directory() . '/inc/menupage/setting/header-options.php';
+
+}
+
+function submenu_footer_callback () {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+	require get_template_directory() . '/inc/menupage/setting/footer-options.php';
+
 }
 
 
-/**
- * @internal never define functions inside callbacks.
- * these functions could be run multiple times; this would result in a fatal error.
- */
-
-/**
- * custom option and settings
- */
-function wporg_settings_init() {
-	// Register a new setting for "wporg" page.
-	register_setting( 'wporg', 'wporg_options' );
-
-	// Register a new section in the "wporg" page.
+function dvu_settings_init() {
+	// Register a new setting for "mepage" page.
+	register_setting( 'mepage_header', 'dvu_options_header' );
+	register_setting( 'mepage', 'dvu_options_home' );
+	register_setting( 'mepage_footer', 'dvu_options_footer' );
+	
+	// Register a new section in the "mepage_header", "mepage", "mepage_footer" page.
 	add_settings_section(
-		'wporg_section_developers',
-		__( 'The Matrix has you.', 'wporg' ), 'wporg_section_developers_callback',
-		'wporg'
+		'dvu_section_header',
+		__( 'Cấu hình Header.', 'dvutheme' ), 
+		'dvu_section_header_callback',
+		'mepage_header',
 	);
 
-	// Register a new field in the "wporg_section_developers" section, inside the "wporg" page.
+	add_settings_section(
+		'dvu_section_home',
+		__( 'Các thành phần trang chủ', 'dvutheme' ), 
+		'dvu_section_homepage_callback',
+		'mepage',
+	);
+	add_settings_section(
+		'dvu_section_footer',
+		__( 'Cấu hình Footer.', 'dvutheme' ), 
+		'dvu_section_footer_callback',
+		'mepage_footer'
+	);
+
+	// Register a new fields
 	add_settings_field(
-		'wporg_field_pill', // As of WP 4.6 this value is used only internally.
-		                        // Use $args' label_for to populate the id inside the callback.
-			__( 'Pill', 'wporg' ),
-		'wporg_field_pill_cb',
-		'wporg',
-		'wporg_section_developers',
+		'dvu_home_showreal_fields', 
+		 __( 'Showreal', 'dvutheme' ),
+		'dvu_home_showreal_fields_callback',
+		'mepage',
+		'dvu_section_home',
 		array(
-			'label_for'         => 'wporg_field_pill',
-			'class'             => 'wporg_row',
-			'wporg_custom_data' => 'custom',
+			'label_for'         => 'dvu_home_showreal',
+			'class'             => 'dvu_row',
 		)
 	);
-}
 
-/**
- * Register our wporg_settings_init to the admin_init action hook.
- */
-add_action( 'admin_init', 'wporg_settings_init' );
-
-
-/**
- * Custom option and settings:
- *  - callback functions
- */
-
-
-/**
- * Developers section callback function.
- *
- * @param array $args  The settings array, defining title, id, callback.
- */
-function wporg_section_developers_callback( $args ) {
-	?>
-<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Follow the white rabbit.', 'wporg' ); ?></p>
-<?php
-}
-
-/**
- * Pill field callbakc function.
- *
- * WordPress has magic interaction with the following keys: label_for, class.
- * - the "label_for" key value is used for the "for" attribute of the <label>.
- * - the "class" key value is used for the "class" attribute of the <tr> containing the field.
- * Note: you can add custom key value pairs to be used inside your callbacks.
- *
- * @param array $args
- */
-function wporg_field_pill_cb( $args ) {
-	// Get the value of the setting we've registered with register_setting()
-	$options = get_option( 'wporg_options' );
-    $template = get_option( 'home' );
-    print_r($template);
-	?>
-<select id="<?php echo esc_attr( $args['label_for'] ); ?>"
-  data-custom="<?php echo esc_attr( $args['wporg_custom_data'] ); ?>"
-  name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]">
-  <option value="red"
-    <?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'red', false ) ) : ( '' ); ?>>
-    <?php esc_html_e( 'red pill', 'wporg' ); ?>
-  </option>
-  <option value="blue"
-    <?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'blue', false ) ) : ( '' ); ?>>
-    <?php esc_html_e( 'blue pill', 'wporg' ); ?>
-  </option>
-</select>
-<p class="description">
-  <?php esc_html_e( 'You take the blue pill and the story ends. You wake in your bed and you believe whatever you want to believe.', 'wporg' ); ?>
-</p>
-<p class="description">
-  <?php esc_html_e( 'You take the red pill and you stay in Wonderland and I show you how deep the rabbit-hole goes.', 'wporg' ); ?>
-</p>
-<?php
-}
-
-/**
- * Add the top level menu page.
- */
-function wporg_options_page() {
-	add_menu_page(
-		'WPOrg',
-		'WPOrg Options',
-		'manage_options',
-		'wporg',
-		'wporg_options_page_html'
+	add_settings_field(
+		'dvu_home_news_fields', 
+		 __( 'News', 'dvutheme' ),
+		'dvu_home_news_fields_callback',
+		'mepage',
+		'dvu_section_home',
+		array(
+			'label_for'         => 'dvu_home_news',
+			'class'             => 'dvu_row',
+		)
 	);
+
+	add_settings_field(
+		'dvu_home_network_fields', 
+		 __( 'Network', 'dvutheme' ),
+		'dvu_home_network_fields_callback',
+		'mepage',
+		'dvu_section_home',
+		array(
+			'label_for'         => 'dvu_home_network',
+			'class'             => 'dvu_row',
+		)
+	);
+
+
+	//header fields
+	add_settings_field(
+		'dvu_header_field_title', 
+		 __( 'Title', 'dvutheme' ),
+		'dvu_header_fields_cb',
+		'mepage_header',
+		'dvu_section_header',
+		array(
+			'label_for'         => 'dvu_field_title',
+			'class'             => 'dvu_row',
+		)
+	);
+	add_settings_field(
+		'dvu_header_field_description', 
+		 __( 'Description', 'dvutheme' ),
+		'dvu_header_fields_cb',
+		'mepage_header',
+		'dvu_section_header',
+		array(
+			'label_for'         => 'dvu_field_description',
+			'class'             => 'dvu_row',
+		)
+	);
+	add_settings_field(
+		'dvu_header_field_logo', 
+		 __( 'Logo', 'dvutheme' ),
+		'dvu_header_fields_cb',
+		'mepage_header',
+		'dvu_section_header',
+		array(
+			'label_for'         => 'dvu_field_logo',
+			'class'             => 'dvu_row',
+		)
+	);
+	add_settings_field(
+		'dvu_header_field_favicon', 
+		 __( 'Favicon', 'dvutheme' ),
+		'dvu_header_fields_cb',
+		'mepage_header',
+		'dvu_section_header',
+		array(
+			'label_for'         => 'dvu_field_favicon',
+			'class'             => 'dvu_row',
+		)
+	);
+	
 }
 
-
-/**
- * Register our wporg_options_page to the admin_menu action hook.
- */
-add_action( 'admin_menu', 'wporg_options_page' );
+add_action( 'admin_init', 'dvu_settings_init' );
 
 
-/**
- * Top level menu callback function
- */
-function wporg_options_page_html() {
-	// check user capabilities
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-
-	// add error/update messages
-
-	// check if the user have submitted the settings
-	// WordPress will add the "settings-updated" $_GET parameter to the url
-	if ( isset( $_GET['settings-updated'] ) ) {
-		// add settings saved message with the class of "updated"
-		add_settings_error( 'wporg_messages', 'wporg_message', __( 'Settings Saved', 'wporg' ), 'updated' );
-	}
-
-	// show error/update messages
-	settings_errors( 'wporg_messages' );
+function dvu_section_header_callback( $args ) {
 	?>
-<div class="wrap">
-  <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-  <form action="options.php" method="post">
-    <?php
-                // output security fields for the registered setting "wporg"
-                settings_fields( 'wporg' );
-                // output setting sections and their fields
-                // (sections are registered for "wporg", each field is registered to a specific section)
-                do_settings_sections( 'wporg' );
-                // output save settings button
-                submit_button( 'Save Settings' );
-                ?>
-  </form>
-</div>
+	<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Các thông tin tiêu đề của trang web', 'dvutheme' ); ?></p>
 <?php
 }
 
-// add_action( 'init', function() {
-// remove_post_type_support( 'post', 'editor' );
-// remove_post_type_support( 'page', 'editor' );
+function dvu_section_homepage_callback( $args ) {
+	?>
+	<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Thiết lập các phần hiển thị từng section ngoài trang chủ', 'dvutheme' ); ?></p>
+<?php
+}
 
-// }, 99);
+function dvu_section_footer_callback( $args ) {
+	?>
+	<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Cấu hình Chân trang', 'dvutheme' ); ?></p>
+<?php
+}
+
+function dvu_header_fields_cb( $args ) {
+	
+	if($args['label_for'] === 'dvu_field_title'){
+		require get_template_directory() . '/inc/menupage/setting/fields/header/title.php';
+	}else if($args['label_for'] === 'dvu_field_description'){
+		require get_template_directory() . '/inc/menupage/setting/fields/header/description.php';
+	}else if($args['label_for'] === 'dvu_field_logo'){
+		require get_template_directory() . '/inc/menupage/setting/fields/header/logo.php';
+	}else if($args['label_for'] === 'dvu_field_favicon'){
+		require get_template_directory() . '/inc/menupage/setting/fields/header/favicon.php';
+	}
+	
+}
+//home fields
+function dvu_home_showreal_fields_callback($args)  {
+	require get_template_directory() . '/inc/menupage/setting/fields/showreal.php';
+}
+function dvu_home_news_fields_callback($args)  {
+	require get_template_directory() . '/inc/menupage/setting/fields/news.php';
+}
+function dvu_home_network_fields_callback($args)  {
+	require get_template_directory() . '/inc/menupage/setting/fields/network.php';
+}
+
+

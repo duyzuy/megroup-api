@@ -29,22 +29,13 @@ function neo_slide_mtb_callback($post){
                 "url" => "",
             ),
             "link" => "",
-        );;
-        print_r($slider_options);
-        // $slide_link = get_post_meta($post->ID, '_slide_link', true);
-        // $type = get_post_meta($post->ID, '_slide_type', true) ?  get_post_meta($post->ID, '_slide_type', true) : 'image';
-        // $bn_pc = get_post_meta($post->ID, '_banner_desktop', true);
-        // $bn_mb = get_post_meta($post->ID, '_banner_mobile', true);
-        // $bn_pc_url = get_post_meta($post->ID, '_banner_desktop_url', true);
-        // $bn_mb_url = get_post_meta($post->ID, '_banner_mobile_url', true);
-        // $youtube = get_post_meta($post->ID, '_slide_youtube_id', true);
-        // $show_hide = get_post_meta($post->ID, '_slide_showhide', true);
+        );
+      
+       
     
        ?>
-<p><strong>Chọn loại slider</strong></p>
-
 <div class="pyre_wrap_content">
-  <div class="pyre_tab_type pyre_content_image_banner active">
+
     <div class="pyre_row">
       <div class="pyre_metabox_field pyre_col">
 
@@ -62,7 +53,6 @@ function neo_slide_mtb_callback($post){
             <div class="pyre_thumbnail_noimage">
               <span>No image</span>
             </div>
-
             <?php } ?>
           </div>
 
@@ -94,30 +84,23 @@ function neo_slide_mtb_callback($post){
         </div>
       </div>
     </div>
-    <div class="pyre_metabox_field">
-
+    <div class="pyre_row">
+    <div class="pyre_metabox_field pyre_col">
       <label for="pyre_gallery_project_recent">Đường dẫn banner</label>
-
       <div class="pyre_field">
-
         <input type="text" class="form-control" name="pyre_slide_link" id="pyre_slide_link"
           value="<?php echo esc_attr($slider_options['link']) ?>">
-
       </div>
     </div>
-  </div>
-
-  <div class="pyre_metabox_field">
-
+  
+  <div class="pyre_metabox_field pyre_col">
     <label for="pyre_slide_showhide">Cho phép hiển thị</label>
-
     <div class="pyre_field">
-
       <input type="checkbox" name="pyre_slide_showhide" id="pyre_slide_showhide" value="show"
-        <?php echo $slider_options['is_show'] === 'show' ? 'checked' : '' ?>>
-
+        <?php echo $slider_options['is_show'] === 1 ? 'checked' : '' ?>>
     </div>
   </div>
+            </div>
 </div>
 <?php
 }
@@ -162,7 +145,7 @@ function dv_save_slider_data($post_id){
 
     }
     $data = array(
-        "is_show" => $_POST['pyre_slide_showhide'],
+        "is_show" => $_POST['pyre_slide_showhide'] ? 1 : 0,
         "mobile" => array(
             "url" => sanitize_text_field($_POST['pyre_banner_mobile_url']),
         ),
