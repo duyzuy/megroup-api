@@ -64,7 +64,6 @@ add_action( 'rest_api_init', function () {
           'methods'  => WP_REST_Server::READABLE,
           'callback' => 'dv_get_all_post',
           'permission_callback' =>  function ( WP_REST_Request $request ) {
-            print_r($request);
             return true;
         },
     ) );

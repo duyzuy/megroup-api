@@ -15,8 +15,8 @@ function wpdocs_register_my_custom_menu_page() {
 	add_submenu_page( 'me_setting', 'Thiết lập thông tin đầu trang', 'Đầu trang',
 	'manage_options', 'me_setting_header', 'submenu_header_callback', 5);
 	
-	// add_submenu_page( 'me_setting', 'Thiết lập thông tin chân trang', 'Chân trang',
-	// 'manage_options', 'me_setting_footer', 'submenu_footer_callback', 10);
+	add_submenu_page( 'me_setting', 'Thiết lập thông tin chân trang', 'Chân trang',
+	'manage_options', 'me_setting_footer', 'submenu_footer_callback', 10);
 	
 	
 	// add_submenu_page( $parent_slug:string, $page_title:string, $menu_title:string, $capability:string, $menu_slug:string, $callback:callable, $position:integer|float|null )
@@ -125,40 +125,18 @@ function dvu_settings_init() {
 		'mepage_header',
 		'dvu_section_header',
 		array(
-			'label_for'         => 'dvu_field_title',
+			'label_for'         => 'dvu_field_content',
 			'class'             => 'dvu_row',
 		)
 	);
 	add_settings_field(
-		'dvu_header_field_description', 
-		 __( 'Description', 'dvutheme' ),
+		'dvu_header_field_social', 
+		 __( 'Socials', 'dvutheme' ),
 		'dvu_header_fields_cb',
 		'mepage_header',
 		'dvu_section_header',
 		array(
-			'label_for'         => 'dvu_field_description',
-			'class'             => 'dvu_row',
-		)
-	);
-	add_settings_field(
-		'dvu_header_field_logo', 
-		 __( 'Logo', 'dvutheme' ),
-		'dvu_header_fields_cb',
-		'mepage_header',
-		'dvu_section_header',
-		array(
-			'label_for'         => 'dvu_field_logo',
-			'class'             => 'dvu_row',
-		)
-	);
-	add_settings_field(
-		'dvu_header_field_favicon', 
-		 __( 'Favicon', 'dvutheme' ),
-		'dvu_header_fields_cb',
-		'mepage_header',
-		'dvu_section_header',
-		array(
-			'label_for'         => 'dvu_field_favicon',
+			'label_for'         => 'dvu_field_social',
 			'class'             => 'dvu_row',
 		)
 	);
@@ -170,32 +148,30 @@ add_action( 'admin_init', 'dvu_settings_init' );
 
 function dvu_section_header_callback( $args ) {
 	?>
-	<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Các thông tin tiêu đề của trang web', 'dvutheme' ); ?></p>
+<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Các thông tin tiêu đề của trang web', 'dvutheme' ); ?>
+</p>
 <?php
 }
 
 function dvu_section_homepage_callback( $args ) {
 	?>
-	<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Thiết lập các phần hiển thị từng section ngoài trang chủ', 'dvutheme' ); ?></p>
+<p id="<?php echo esc_attr( $args['id'] ); ?>">
+  <?php esc_html_e( 'Thiết lập các phần hiển thị từng section ngoài trang chủ', 'dvutheme' ); ?></p>
 <?php
 }
 
 function dvu_section_footer_callback( $args ) {
 	?>
-	<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Cấu hình Chân trang', 'dvutheme' ); ?></p>
+<p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Cấu hình Chân trang', 'dvutheme' ); ?></p>
 <?php
 }
 
 function dvu_header_fields_cb( $args ) {
 	
-	if($args['label_for'] === 'dvu_field_title'){
-		require get_template_directory() . '/inc/menupage/setting/fields/header/title.php';
-	}else if($args['label_for'] === 'dvu_field_description'){
-		require get_template_directory() . '/inc/menupage/setting/fields/header/description.php';
+	if($args['label_for'] === 'dvu_field_content'){
+		require get_template_directory() . '/inc/menupage/setting/fields/header/content.php';
 	}else if($args['label_for'] === 'dvu_field_logo'){
-		require get_template_directory() . '/inc/menupage/setting/fields/header/logo.php';
-	}else if($args['label_for'] === 'dvu_field_favicon'){
-		require get_template_directory() . '/inc/menupage/setting/fields/header/favicon.php';
+		require get_template_directory() . '/inc/menupage/setting/fields/header/social.php';
 	}
 	
 }
@@ -209,5 +185,3 @@ function dvu_home_news_fields_callback($args)  {
 function dvu_home_network_fields_callback($args)  {
 	require get_template_directory() . '/inc/menupage/setting/fields/network.php';
 }
-
-

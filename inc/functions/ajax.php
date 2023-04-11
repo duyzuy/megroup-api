@@ -66,9 +66,9 @@ function dvu_send_register(){
         'email'=> $email,
     );
 
-       $to = 'vutruongduy2109@gmail.com';
+       $to = 'hello@gmail.com';
 
-       $subject = 'SCG - Registration -' .$email;
+       $subject = 'Megroup - Registration -' .$email;
 
        $headers[] = 'From: '.get_bloginfo('name').'<'.$to.'>';
        $headers[] = 'Reply-to: '.$name.'<'.$email.'>';
@@ -87,4 +87,3 @@ function dvu_send_register(){
       
    die();
 }
-

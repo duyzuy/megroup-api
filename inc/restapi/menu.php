@@ -4,13 +4,13 @@
 function getAll_navigation_menu(WP_REST_Request $request) {
     
 
-  $menuId = $request['menu_id'] ? (int)$request['menu_id'] : 0;
+  $menuId = $request['menu_id'] ? (int)$request['menu_id'] : 6;
  
    
-	//$menuLocations = get_nav_menu_locations();
+	$menuLocations = get_nav_menu_locations();
 
   $menuItems = wp_get_nav_menu_items($menuId);
-	
+
   if(!$menuItems){
     $error = new WP_Error();
     if (empty($posts)) {

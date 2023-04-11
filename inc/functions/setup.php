@@ -28,9 +28,8 @@ function dvu_setups(){
     /*  Registrer menus. */
     register_nav_menus( array(
       'primary' => __( 'Main Menu', 'dvutemplate' ),
-      'bottom' => __( 'Footer Menu', 'dvutemplate' ),
-      'primary_mobile' => __( 'Main Menu - Mobile', 'dvutemplate' ),
-      'top_bar_nav' => __( 'Top Menu', 'dvutemplate' ),
+      'footer' => __( 'Footer Menu', 'dvutemplate' ),
+      'header_top' => __( 'Top Menu', 'dvutemplate' ),
     ) );
   
 

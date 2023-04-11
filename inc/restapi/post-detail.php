@@ -13,7 +13,7 @@ $args = array(
  $post = $query->get_posts(); 
 
  if($post){
-  $post =  $post[0];
+  $post = $post[0];
   $postDetail->id = $post->ID;
   $postDetail->createAt = $post->post_date;
   $postDetail->title = get_the_title( $post->ID );
@@ -33,11 +33,6 @@ $args = array(
 
 	$response = new WP_REST_Response( $slug );
 
-	// Add a custom status code
-	//$response->set_status( 201 );
-  // (?P<category_id>\d+)
-	// Add a custom header
-	//$response->header( 'Location', 'http://example.com/' );
 	return $response;
 }
 

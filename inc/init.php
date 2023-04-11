@@ -6,11 +6,7 @@ require get_template_directory() . '/inc/admin/enqueue.php';
 
 //FUNCTIONS
 require get_template_directory() . '/inc/functions/setup.php';
-require get_template_directory() . '/inc/functions/breadcrumbs.php';
-require get_template_directory() . '/inc/functions/walker.php';
-require get_template_directory() . '/inc/functions/enqueue.php';
 require get_template_directory() . '/inc/functions/structure.php';
-require get_template_directory() . '/inc/functions/widgets.php';
 require get_template_directory() . '/inc/functions/ajax.php';
 
 
@@ -66,6 +62,8 @@ require get_template_directory() . '/inc/shortcodes/sc-form-contact.php';
 
 require get_template_directory() . '/inc/restapi/stores.php';
 require get_template_directory() . '/inc/restapi/post.php';
+require get_template_directory() . '/inc/restapi/menu.php';
+
 
 //HELPERS
 require get_template_directory() . '/inc/helpers/gallery.php';
