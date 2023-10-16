@@ -31,16 +31,9 @@ function dvu_setups(){
       'footer' => __( 'Footer Menu', 'dvutemplate' ),
       'header_top' => __( 'Top Menu', 'dvutemplate' ),
     ) );
-  
-
-        
     
     }
 add_action( 'after_setup_theme', 'dvu_setups' );
-
-   
-
-
 
 function disable_wp_emojicons() {
 
@@ -57,25 +50,29 @@ function disable_wp_emojicons() {
    
   }
   add_action( 'init', 'disable_wp_emojicons' );
-
-
-
   remove_action('wp_head', 'wp_generator');
 
-  function wpbeginner_remove_version() {
+
+function wpbeginner_remove_version() {
     return '';
     }
-  add_filter('the_generator', 'wpbeginner_remove_version');
+add_filter('the_generator', 'wpbeginner_remove_version');
 
 
-function init_smtp( $phpmailer ) {
-    $phpmailer->isSMTP();
-    $phpmailer->Host = 'smtp.gmail.com';
-    $phpmailer->SMTPAuth = true;
-    $phpmailer->Port = 587; // May need to be changed
-    $phpmailer->SMTPSecure = 'tls';
-    $phpmailer->Username = '';
-    $phpmailer->Password = '';
+/**
+ * SETUP EMAIL
+ */
+add_action('phpmailer_init', 'dv_mailer_configuration');
+
+function dv_mailer_configuration($mailer){
+    $mailer->isSMTP();     
+    $mailer->Host = "smtp.gmail.com"; // your SMTP server
+    $mailer->Port = 587;
+    $mailer->SMTPAuth   = true;
+    $mailer->SMTPSecure = 'TLS';
+    $mailer->CharSet  = "utf-8";
+    $mailer->Username = 'vutruongduy2109@gmail.com';
+    $mailer->Password = 'cejh qoep oxfu xfdl';
+    $mailer->isHTML(true);  
 }
-    
-add_action( 'phpmailer_init', 'init_smtp' );
+

@@ -20,19 +20,18 @@ function neo_slide_mtb_callback($post){
 	    wp_nonce_field( 'dv_save_slider_data', 'dv_slide_nonce' );
        
  
-        $slider_options = get_post_meta($post->ID, '_slide_options', true) ? get_post_meta($post->ID, '_slide_options', true) :  array(
-            "is_show" => 0,
-            "mobile" => array(
-                "url" => "",
-            ),
-            "desktop" => array(
-                "url" => "",
-            ),
-            "link" => "",
-        );
+      $slider_options = get_post_meta($post->ID, '_slide_options', true) ? get_post_meta($post->ID, '_slide_options', true) :  array(
+          "is_show" => 0,
+          "mobile" => array(
+              "url" => "",
+          ),
+          "desktop" => array(
+              "url" => "",
+          ),
+          "link" => "",
+      );
       
-       
-    
+     
        ?>
 <div class="pyre_wrap_content">
 
@@ -47,7 +46,9 @@ function neo_slide_mtb_callback($post){
 
             <?php
             if($slider_options['desktop']['url'] !== ""){
-                echo "<img src=".$slider_options['desktop']['url']." class='img-responsive'/>";
+                $desktop_image = wp_get_attachment_url( $slider_options['desktop']['url'] );
+                echo "<img src='{$desktop_image}' class='img-responsive' />";
+               
             }else{
            ?>
             <div class="pyre_thumbnail_noimage">
@@ -70,7 +71,9 @@ function neo_slide_mtb_callback($post){
           <div class="pyre_thumbnail">
             <?php 
           if($slider_options['mobile']['url'] !== ""){
-                echo "<img src=".$slider_options['mobile']['url']." class='img-responsive'/>";
+                $mobile_image = wp_get_attachment_url( $slider_options['mobile']['url'] );
+                echo "<img src='{$mobile_image}' class='img-responsive' />";
+               
             }else{ ?>
             <div class="pyre_thumbnail_noimage">
               <span>No image</span>
@@ -136,14 +139,14 @@ function dv_save_slider_data($post_id){
         }
 
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-			return;
-		}
+          return;
+        }
 
     if (array_key_exists('pyre_slide_link', $_POST)) {
         update_post_meta( $post_id, '_slide_link', sanitize_text_field($_POST['pyre_slide_link']) );
 
-
     }
+
     $data = array(
         "is_show" => $_POST['pyre_slide_showhide'] ? 1 : 0,
         "mobile" => array(

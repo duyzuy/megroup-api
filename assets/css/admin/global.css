@@ -1,41 +1,41 @@
 #front_page .inside {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 ul.pyre_metabox_tabs {
-  float: left;
-  margin: 0;
-  width: 17%;
+    float: left;
+    margin: 0;
+    width: 17%;
 }
 
 ul.pyre_metabox_tabs li a {
-  text-decoration: none;
-  display: block;
-  padding: 10px 10px 10px 20px;
-  color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 10px 10px 10px 20px;
+    color: #000;
 }
 
 ul.pyre_metabox_tabs li {
-  background: #f1f1f1;
-  border-bottom: 1px solid #eaeaea;
-  margin-bottom: 0;
+    background: #f1f1f1;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 0;
 }
 
 ul.pyre_metabox_tabs li.active {
-  background: #fff;
+    background: #fff;
 }
 
 div.pyre_metabox {
-  float: left;
-  width: 83%;
-  display: block;
-  padding: 30px 30px 10px;
-  box-sizing: border-box;
+    float: left;
+    width: 83%;
+    display: block;
+    padding: 30px 30px 10px;
+    box-sizing: border-box;
 }
 
 .pyre_metabox .pyre_metabox_tab:not(.active) {
-  display: none;
+    display: none;
 }
 
 /* .pyre_metabox_field {
@@ -46,213 +46,213 @@ div.pyre_metabox {
 } */
 
 .pyre_slider_admin_option .pyre_metabox_field {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .pyre_metabox_field label {
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: inline-block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
 .pyre_metabox_field .pyre_field {
-  width: 100%;
+    width: 100%;
 }
 
 .pyre_metabox_field .pyre_desc p {
-  margin: 0;
-  color: #c4c4c4;
+    margin: 0;
+    color: #c4c4c4;
 }
 
 .inline-group {
-  display: flex;
+    display: flex;
 }
 .inline-group .form-control {
-  margin-right: 0 !important;
-  border-right-width: 0;
-  border-radius: 4px 0 0 4px;
+    margin-right: 0 !important;
+    border-right-width: 0;
+    border-radius: 4px 0 0 4px;
 }
 
 .pyre_field input[type="text"],
 .pyre_field select {
-  width: 100%;
-  padding: 5px 10px;
+    width: 100%;
+    padding: 5px 10px;
 }
 
 .pyre_inline {
-  display: flex;
+    display: flex;
 }
 
 .pyre_button {
-  height: 34px !important;
-  line-height: 32px !important;
-  border: none !important;
-  border-radius: 0 !important;
+    height: 34px !important;
+    line-height: 32px !important;
+    border: none !important;
+    border-radius: 0 !important;
 }
 
 option:not(first-child) {
-  color: #000;
-  line-height: 32px;
-  height: 32px;
-  padding: 8px;
+    color: #000;
+    line-height: 32px;
+    height: 32px;
+    padding: 8px;
 }
 
 .input-vd:not(.active) {
-  display: none;
+    display: none;
 }
 
 ul.pyre_tabs_banner {
-  display: flex;
+    display: flex;
 }
 
 ul.pyre_tabs_banner li {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 ul.pyre_tabs_banner li:not(.active) {
-  background: #f1f1f1;
-  border: 1px solid #fff;
-  box-sizing: border-box;
+    background: #f1f1f1;
+    border: 1px solid #fff;
+    box-sizing: border-box;
 }
 
 ul.pyre_tabs_banner li a {
-  padding: 10px 20px;
-  display: block;
-  text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
 }
 
 .pyre_panel_banner:not(.active) {
-  display: none;
+    display: none;
 }
 
 /*==========woocommerce============*/
 
 .gallery-thumb li.thumb-image {
-  display: inline-block;
-  position: relative;
-  margin-right: 5px;
-  max-width: 80px;
-  border: 1px solid #f1f1f1;
-  border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+    max-width: 80px;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
 }
 
 .gallery-thumb li.thumb-image span {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  display: block;
-  top: 0;
-  right: 0;
-  background: #f44336;
-  text-align: center;
-  color: #fff;
-  line-height: 11px;
-  cursor: pointer;
-  display: none;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: block;
+    top: 0;
+    right: 0;
+    background: #f44336;
+    text-align: center;
+    color: #fff;
+    line-height: 11px;
+    cursor: pointer;
+    display: none;
 }
 
 .gallery-thumb li.thumb-image:hover span {
-  display: block;
+    display: block;
 }
 
 .img-responsive {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 .pyre_metabox_field .pyre_field {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 #dv_project_info .pyre_metabox_field .pyre_desc {
-  max-width: 200px;
+    max-width: 200px;
 }
 
 #dv_project_info .pyre_metabox_field .pyre_field {
-  width: calc(100% - 200px);
-  max-width: 350px;
+    width: calc(100% - 200px);
+    max-width: 350px;
 }
 .inline-field .pyre_field {
-  display: inline-block;
-  width: auto;
-  margin-right: 20px;
+    display: inline-block;
+    width: auto;
+    margin-right: 20px;
 }
 .inline-field .pyre_field label {
-  vertical-align: text-bottom;
+    vertical-align: text-bottom;
 }
 .pyre_field textarea {
-  width: 100%;
-  min-height: 80px;
-  resize: none;
-  padding: 5px 10px;
+    width: 100%;
+    min-height: 80px;
+    resize: none;
+    padding: 5px 10px;
 }
 .pyre_row {
-  display: flex;
-  justify-content: center;
-  margin-left: -15px;
-  margin-right: -15px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin-left: -15px;
+    margin-right: -15px;
+    flex-wrap: wrap;
 }
 .pyre_row .pyre_col {
-  flex: 1;
-  padding-left: 15px;
-  padding-right: 15px;
+    flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .pyre_thumbnail {
-  width: 100%;
-  height: 150px;
-  position: relative;
-  margin-bottom: 20px;
-  background-color: #f1f1f1;
+    width: 100%;
+    height: 150px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
 }
 .pyre_thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .pyre_thumbnail_noimage {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 1px dashed #7e8993;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #7e8993;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 
-  align-items: center;
+    align-items: center;
 }
 .pyre_metabox_field span.help {
-  display: block;
-  font-weight: 300;
-  font-size: 12px;
+    display: block;
+    font-weight: 300;
+    font-size: 12px;
 }
 .checkbox_field {
-  display: inline-block;
-  width: auto !important;
-  margin-right: 20px;
+    display: inline-block;
+    width: auto !important;
+    margin-right: 20px;
 }
 .checkbox_field label {
-  margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 .pyre_tab_type:not(.active) {
-  display: none;
+    display: none;
 }
 .wp-block {
-  max-width: 900px;
+    max-width: 900px;
 }
 
 .pyre-action {
-  color: #ddd;
-  font-size: 13px;
-  padding: 2px 0 0;
-  position: relative;
-  left: -9999em;
+    color: #ddd;
+    font-size: 13px;
+    padding: 2px 0 0;
+    position: relative;
+    left: -9999em;
 }
 .pyre-action span.delete a {
-  color: #a00;
+    color: #a00;
 }
 td.has-row-actions:hover .pyre-action {
-  left: 0;
+    left: 0;
 }
 /* .pyre_flex{
     display: flex;
@@ -261,59 +261,65 @@ td.has-row-actions:hover .pyre-action {
     justify-content: space-between;
 } */
 span.delete form {
-  display: inline-block;
+    display: inline-block;
 }
 span.delete .button-submit {
-  border: none;
-  background-color: transparent;
-  color: #a00;
-  cursor: pointer;
-  font-size: 13px;
-  padding: 0;
+    border: none;
+    background-color: transparent;
+    color: #a00;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 0;
 }
 .image-thumbnail-preview {
-  width: 95%;
-  border: 1px dashed #a9a9a9;
-  min-height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  margin-top: 15px;
+    width: 95%;
+    border: 1px dashed #a9a9a9;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
+.product_brand-logo .image-thumbnail-preview {
+    width: 100px;
+    height: 100px;
+    min-height: auto;
+}
+
 .btn-remove-banner {
-  text-decoration: none;
-  color: #a00;
-  vertical-align: sub;
-  margin-left: 10px;
+    text-decoration: none;
+    color: #a00;
+    vertical-align: sub;
+    margin-left: 10px;
 }
 .dvu-wraper {
-  background-color: #fff;
-  padding: 10px 20px;
+    background-color: #fff;
+    padding: 10px 20px;
 }
 
 .dvu-option-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
 }
 .dvu-option-container .inner-container {
-  max-width: 800px;
+    max-width: 800px;
 }
 .preview-img {
-  width: 100px;
-  height: 100px;
-  display: block;
-  border: 2px dashed #f1f1f1;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100px;
+    height: 100px;
+    display: block;
+    border: 2px dashed #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .preview-img img {
-  max-width: 100%;
+    max-width: 100%;
 }
 .form-table .dvu_row {
-  border-bottom: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
 }

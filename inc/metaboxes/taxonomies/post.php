@@ -7,7 +7,6 @@
 function dvu_post_add_image( $term ) {
 
 	
-	
 	?>
 	<div class="form-field pyre_field">
 		<label for="taxonomy_image"><?php _e( 'Image', 'dvutemplate' ); ?></label>
@@ -16,7 +15,6 @@ function dvu_post_add_image( $term ) {
 			<span>No image</span>
 		</div>
 		<input type="hidden" name="post_tax_image" id="taxonomy_image" value="">
-		
 	</div>
 <?php
 }
@@ -29,16 +27,14 @@ function dvu_post_edit_image( $term ) {
 	// put the term ID into a variable
 	$t_id = $term->term_id;
 	$term_image = get_term_meta( $t_id, '_p_tax_image', true ); 
-	
+
 	?>
 	<tr class="form-field">
 		<th><label for="taxonomy_image"><?php _e( 'Image', 'dvutemplate' ); ?></label></th>
 		 
 		<td class="pyre_field">
-		
-		<a href="#" class="button btn-upload-banner">Thay hình ảnh</a>
-		<a href="#" class="delete btn-remove-banner">Xoá hình ảnh</a>
-
+			<a href="#" class="button btn-upload-banner">Thay hình ảnh</a>
+			<a href="#" class="delete btn-remove-banner">Xoá hình ảnh</a>
 			<div class="image-thumbnail-preview pyre_thumbnail">
 				<?php 
 					if($term_image){
@@ -47,7 +43,6 @@ function dvu_post_edit_image( $term ) {
 						echo '<span>No image</span>';
 					}
 				?>
-				
 			</div>	 
 			<input type="hidden" name="post_tax_image" id="taxonomy_image" value="<?php echo esc_attr( $term_image ) ? esc_attr( $term_image ) : ''; ?>">
 		</td>
